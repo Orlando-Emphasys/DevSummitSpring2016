@@ -25,7 +25,8 @@
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Create Article', :class => 'btn btn-default'%>
+    <%= link_to 'Back', root_url , :class => 'btn btn-default' %>
   </p>
  
 <% end %>
