@@ -7,9 +7,10 @@ body
 	background-color: #CBF7BC;
 }
 
-.bodyContainer
+.container1, .body
 {
 	padding: 10px;
+	padding-top: 0px;
 }
 
 h1
@@ -22,3 +23,40 @@ table
 	border: groove;
 	width: auto !important;
 }
+
+#commentSection
+{
+	width: 600px;
+}
+
+#commentsTitle
+{
+	border-bottom: ridge;
+	border-color: #979EA1;
+}
+
+.body
+{
+	width: 700px;
+}
+
+#article_text
+{
+	width: 600px;
+	height: 260px;
+}
+
+#comment_body
+{
+	width: 600px;
+	height: 90px;
+	resize: none;
+}
+
+pre {
+     white-space: pre-line;
+     text-align : left;
+	 background: none;
+	 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+  }
