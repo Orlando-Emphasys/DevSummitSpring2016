@@ -16,7 +16,7 @@
 			<td><%= article.text %></td>
 			<td><%= link_to 'Show', article_path(article) %></td>
 			<td><%= link_to 'Edit', edit_article_path(article) %></td>
-			<td><%= link_to 'Destroy', article_path(article), :class => 'delete', :remote => true, method: :delete%></td>
+			<td><%= link_to 'Destroy', article_path(article), :class => 'delete'%></td>
 		</tr>
 	<% end %>
 </table>
@@ -27,13 +27,17 @@
 <script type="text/javascript">
 	$(function(){
 
+		var href;
 		$('#deleteConfirm').dialog({
 			resizable:false,
 			modal: true,
 			autoOpen: false,
 			buttons:{
 				Yes: function(){
-					window.location.reload
+					$.ajax({
+						type: "DELETE",
+						url: href
+					});
 
 					$(this).dialog("close");
 				},
@@ -45,6 +49,8 @@
 
 		$('.delete').on('click', function(e){
 			e.preventDefault();
+
+			href = $(this).attr('href');
 
 			$('#deleteConfirm').dialog("open");
 		});

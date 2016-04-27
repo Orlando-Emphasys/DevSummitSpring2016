@@ -1,7 +1,5 @@
 class ArticlesController < ApplicationController
 	http_basic_authenticate_with name: "admin", password: "secret", except: [:index, :show]
-	before_action :all_tasks, only: [:destroy]
-  	before_action :set_tasks, only: [:destroy]
 
 	def index
 		@articles = Article.all
@@ -23,7 +21,7 @@ class ArticlesController < ApplicationController
 		@article = Article.new(article_params)
 
 		if @article.save
-			redirect_to @article
+			redirect_to root_url
 		else
 			render 'new'
 		end
@@ -40,8 +38,12 @@ class ArticlesController < ApplicationController
 	end
 
 	def destroy
-		@article = Article.find(params[:id])
-		@article.destroy
+		respond_to do |format|
+			@article = Article.find(params[:id])
+			if(@article.destroy)
+				format.js {render nothing: true}
+			end
+		end
 	end
 
 	private
