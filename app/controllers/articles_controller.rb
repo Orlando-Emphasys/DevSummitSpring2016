@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-	http_basic_authenticate_with name: "admin", password: "secret", except: [:index, :show]
 
 	def index
 		@articles = Article.all
@@ -31,7 +30,7 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 
 		if @article.update(article_params)
-			redirect_to @article
+			redirect_to root_url
 		else
 			render 'edit'
 		end
