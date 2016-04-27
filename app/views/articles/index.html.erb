@@ -34,7 +34,12 @@
 				Yes: function(){
 					$.ajax({
 						type: "DELETE",
-						url: href
+						url: href,
+						success: function(data){
+							location.reload(false);
+						}, 
+						error: function(data){
+						}
 					});
 
 					$(this).dialog("close");
